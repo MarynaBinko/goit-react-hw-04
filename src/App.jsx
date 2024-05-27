@@ -15,15 +15,23 @@ function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [page, setPage] = useState(1);
+  const [topic, setTopic] = useState('');
 
- 
-    const onSearch = async (topic) => {
+  const onSearch = async (newTopic) => {
+    setTopic(newTopic);
+    setPage(1);
+    setImages([]);
+    fetchImages(newTopic, 1);
+  };
+
+
+    const fetchImages = async (topic, page) => {
       try {
-      setImages([]);
-      setError(false);
+        setError(false);
         setLoading(true);
-        const data = await fetchImagesApi (topic);
-        setImages(data);
+        const data = await fetchImagesApi(topic, page);
+        setImages((prevImages) => [...prevImages, ...data]);
       } catch (error) {
         setError(true);
       } finally {
@@ -31,18 +39,20 @@ function App() {
       }
     };
 
+    const loadMore = () => {
+      const nextPage = page + 1;
+      setPage(nextPage);
+      fetchImages(topic, nextPage);
+    };
+
 
   return (
     <>
     <Header onSearch={onSearch}/>
-    <LoadMoreBtn/>  
-    {loading && <p>Loading data, please wait...</p>}
-    {error && (
-        <p>Whoops, something went wrong! Please try reloading this page!</p>
-      )}
     {images.length > 0 && <ImageGallery images={images}/>}
-    <Loader/>
-    <ErrorMessage/>
+    {loading && <Loader/>}
+    {error && <ErrorMessage message="Whoops, something went wrong! Please try reloading this page!"/>}
+    {images.length > 0 && !loading && <LoadMoreBtn onClick={loadMore} />}        
     <ImageModal/>
     </>
   )

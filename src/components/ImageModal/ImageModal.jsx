@@ -1,4 +1,4 @@
-// import styles from "./ImageModal.modules.css"
+// import styles from "./ImageModal.module.css"
 
 const ImageModal = () => {
   return (

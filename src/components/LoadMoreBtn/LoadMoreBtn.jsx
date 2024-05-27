@@ -1,9 +1,9 @@
-// import styles from "./LoadMoreBtn.modules.css"
+// import styles from "./LoadMoreBtn.module.css"
 
-const LoadMoreBtn = () => {
+const LoadMoreBtn = ({loadMore}) => {
   return (
     <div>
-      <button type="submit">Load more</button>
+      <button type="submit" onClick={loadMore}>Load more</button>
     </div>
   )
 

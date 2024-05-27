@@ -1,11 +1,11 @@
-// import styles from "./SearchBar.modules.css"
+// import styles from "./SearchBar.module.css"
 
 const SearchBar = ({ onSearch }) => {
 
 	const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-	  const topic = form.elements.topic.value;
+const topic = form.elements.topic.value;
     if(form.elements.topic.value.trim() === "") {
 			alert("Please enter search term!")
 			return;
@@ -19,8 +19,8 @@ const SearchBar = ({ onSearch }) => {
          <form onSubmit={handleSubmit}>
       <input
         type="text"
-        autocomplete="off"
-        autofocus
+        // autocomplete="off"
+        // autofocus
         name="topic"
         placeholder="Search images and photos"
       />

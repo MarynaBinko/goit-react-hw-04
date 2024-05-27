@@ -1,9 +1,9 @@
-// import styles from "./ErrorMessage.modules.css"
+// import styles from "./ErrorMessage.module.css"
 
-const ErrorMessage = () => {
+const ErrorMessage = ({message}) => {
   return (
     <div>
-      
+      <p>{message}</p>
     </div>
   )
 }

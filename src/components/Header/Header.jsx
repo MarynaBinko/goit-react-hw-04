@@ -1,4 +1,4 @@
-// import styles from "./Header.modules.css"
+// import styles from "./Header.module.css"
 
 import SearchBar from "../SearchBar/SearchBar"
 

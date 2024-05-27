@@ -1,8 +1,15 @@
 import axios from "axios";
+const ACCESS_KEY="s7-2OHlQ6b9zc1hiGytIsHigWHNrwQUF29UnGjOi69E";
 
-axios.defaults.baseURL = "<https://hn.algolia.com/api/v1>";
+axios.defaults.baseURL = "<https://api.unsplash.com/>";
 
 export const fetchImagesApi = async topic => {
-  const response = axios.get(`/search?query=${topic}`);
-  return response.data.hits;
-};
+  
+      const response = await axios.get(`/search/photos`, {
+        params: { query: topic, client_id: ACCESS_KEY }
+      });
+  
+    return response.data.results;
+    
+  };
+
