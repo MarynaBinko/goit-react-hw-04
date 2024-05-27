@@ -2,7 +2,7 @@
 
 import ImageCard from "../ImageCard/ImageCard"
 
-const ImageGallery = () => {
+const ImageGallery = ({images}) => {
   return (
     <div>
       <ul>

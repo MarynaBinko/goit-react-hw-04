@@ -2,10 +2,10 @@
 
 import SearchBar from "../SearchBar/SearchBar"
 
-const Header = () => {
+const Header = ({onSearch}) => {
   return (
     <header>
-    < SearchBar/>
+    < SearchBar onSearch={onSearch}/>
   </header>
   
   )
