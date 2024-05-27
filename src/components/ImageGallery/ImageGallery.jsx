@@ -6,9 +6,9 @@ const ImageGallery = ({images}) => {
   return (
     <div>
       <ul>
-      {images.map(({ objectID, src, alt }) => (
-      <li key={objectID}>
-              <ImageCard src={src} alt={alt}/>
+      {images.map(({ id, urls, alt_description }) => (
+      <li key={id}>
+              <ImageCard smallSrc={urls.small} regularSrc={urls.regular} alt={alt_description}/>
       </li>
     ))}
      </ul>
