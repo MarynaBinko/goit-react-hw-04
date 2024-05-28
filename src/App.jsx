@@ -22,6 +22,9 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.75)', 
+    },
 };
 Modal.setAppElement('#root'); 
 
@@ -102,7 +105,7 @@ function App() {
         shouldCloseOnEsc={true} 
       >
         {selectedImage && <img src={selectedImage.srcSet} alt={selectedImage.alt} />}
-        <button onClick={closeModal}>Close</button>
+        
       </Modal>
     </ErrorBoundary>
   );
