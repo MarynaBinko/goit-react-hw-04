@@ -7,6 +7,7 @@ import ImageModal from './components/ImageModal/ImageModal';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import Loader from './components/Loader/Loader';
 import { fetchImagesApi } from './images-api';
+import { Audio } from 'react-loader-spinner';
 
 import './App.css';
 import toast,  { Toaster } from 'react-hot-toast';
@@ -31,8 +32,8 @@ function App() {
     try {
       setError(false);
       setLoading(true);
-      const data = await fetchImagesApi(topic, page);     
-      console.log('Fetched Images:', data);        
+      const data = await fetchImagesApi(topic, page);   
+         
       setImages((prevImages) => [...prevImages, ...data]);
     } catch (error) {
       setError(true);
@@ -52,7 +53,16 @@ function App() {
       <Header onSearch={onSearch} notify={notify}/>
       <Toaster />
       {images.length > 0 && <ImageGallery images={images} />}
-      {loading && <Loader />}
+      {loading &&  <Audio
+  height="80"
+  width="80"
+  radius="9"
+  color="orange"
+  ariaLabel="loading"
+  wrapperStyle
+  wrapperClass
+/>}
+   
       {error && <ErrorMessage message="Whoops, something went wrong! Please try reloading this page!" />}
       {images.length > 0 && !loading && <LoadMoreBtn onClick={loadMore} />}
       <ImageModal />
