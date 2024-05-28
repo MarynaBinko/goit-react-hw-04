@@ -1,11 +1,11 @@
 // import styles from "./ImageModal.module.css"
 
-const ImageModal = () => {
-  return (
-    <div>
+// const ImageModal = () => {
+//   return (
+//     <div>
       
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default ImageModal
+// export default ImageModal
