@@ -91,13 +91,10 @@ function App() {
   wrapperStyle
   wrapperClass
 />}
-
-
       {error && <ErrorMessage message="Whoops, something went wrong! Please try reloading this page!" />}
       {images.length > 0 && !loading && <LoadMoreBtn onClick={loadMore} />}
       <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        isOpen={modalIsOpen}        
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Image Modal"
