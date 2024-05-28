@@ -21,8 +21,10 @@
 // }
 
 
+
 module.exports = {
-  root: true,
+  devtool: 'source-map', 
+    root: true,
   env: { browser: true, es2020: true },
   extends: [
     "eslint:recommended",

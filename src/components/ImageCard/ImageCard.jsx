@@ -1,9 +1,9 @@
 // import styles from "./ImageCard.module.css"
 
-const ImageCard = ({ smallSrc, alt }) => {
+const ImageCard = ({ src, srcSet, alt  }) => {
   return (
     <div>
-        <img src={smallSrc} alt={alt} />
+        <img src={src} alt={alt} />
     </div>
   )
 }
