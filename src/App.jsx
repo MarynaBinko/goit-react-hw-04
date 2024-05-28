@@ -9,6 +9,9 @@ import Loader from './components/Loader/Loader';
 import { fetchImagesApi } from './images-api';
 
 import './App.css';
+import toast,  { Toaster } from 'react-hot-toast';
+
+const notify = () => toast('Please enter a search term!');
 
 function App() {
   const [images, setImages] = useState([]);
@@ -28,7 +31,7 @@ function App() {
     try {
       setError(false);
       setLoading(true);
-      const data = await fetchImagesApi(topic, page); 
+      const data = await fetchImagesApi(topic, page);     
       console.log('Fetched Images:', data);        
       setImages((prevImages) => [...prevImages, ...data]);
     } catch (error) {
@@ -46,7 +49,8 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <Header onSearch={onSearch} />
+      <Header onSearch={onSearch} notify={notify}/>
+      <Toaster />
       {images.length > 0 && <ImageGallery images={images} />}
       {loading && <Loader />}
       {error && <ErrorMessage message="Whoops, something went wrong! Please try reloading this page!" />}
@@ -63,9 +67,8 @@ export default App;
 
 
 
-
-
 // import { useState } from 'react';
+// import ErrorBoundary from './ErrorBoundary';
 // import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 // import Header from './components/Header/Header';
 // import ImageGallery from './components/ImageGallery/ImageGallery';
@@ -73,8 +76,14 @@ export default App;
 // import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 // import Loader from './components/Loader/Loader';
 // import { fetchImagesApi } from './images-api';
-
 // import './App.css';
+
+// import toast, { Toaster } from 'react-hot-toast';
+
+// const notify = () => toast('Please enter a search term!');
+
+
+
 
 // function App() {
 //   const [images, setImages] = useState([]);
@@ -82,6 +91,8 @@ export default App;
 //   const [error, setError] = useState(false);
 //   const [page, setPage] = useState(1);
 //   const [topic, setTopic] = useState('');
+
+
 
 //   const onSearch = async (newTopic) => {
 //     setTopic(newTopic);
@@ -94,9 +105,8 @@ export default App;
 //     try {
 //       setError(false);
 //       setLoading(true);
-//       const data = await fetchImagesApi(topic, page);
+//       const data = await fetchImagesApi(topic, page);            
 //       setImages((prevImages) => [...prevImages, ...data]);
-//       console.log(fetchImagesApi);
 //     } catch (error) {
 //       setError(true);
 //     } finally {
@@ -104,7 +114,6 @@ export default App;
 //     }
 //   };
 
-  
 //   const loadMore = () => {
 //     const nextPage = page + 1;
 //     setPage(nextPage);
@@ -112,14 +121,15 @@ export default App;
 //   };
 
 //   return (
-//     <>
-//       <Header onSearch={onSearch} />
+//     <ErrorBoundary>
+//       <Header onSearch={onSearch} notify={notify}/>
+//       <Toaster />
 //       {images.length > 0 && <ImageGallery images={images} />}
 //       {loading && <Loader />}
 //       {error && <ErrorMessage message="Whoops, something went wrong! Please try reloading this page!" />}
 //       {images.length > 0 && !loading && <LoadMoreBtn onClick={loadMore} />}
 //       <ImageModal />
-//     </>
+//     </ErrorBoundary>
 //   );
 // }
 
