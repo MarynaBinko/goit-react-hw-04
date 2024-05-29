@@ -13,6 +13,10 @@ import Modal from 'react-modal';
 import './App.css';
 import toast,  { Toaster } from 'react-hot-toast';
 
+
+
+// _________________Modal___________________
+
 const customStyles = {
   content: {
     top: '50%',
@@ -29,8 +33,7 @@ const customStyles = {
 Modal.setAppElement('#root'); 
 
 
-
-
+// _______________________Toast___________________________
 
 const notify = () => toast('Please enter a search term!');
 
@@ -81,9 +84,13 @@ function App() {
   };
 
   return (
-    <ErrorBoundary>
+    <>
       <Header onSearch={onSearch} notify={notify}/>
-      <Toaster />
+      <Toaster   toastOptions={{
+          style: {
+            marginTop: '70px',
+          },
+        }}/>
       {images.length > 0 && <ImageGallery images={images} openModal={openModal}/>}
        {loading &&  <Audio
   height="80"
@@ -107,7 +114,7 @@ function App() {
         {selectedImage && <img src={selectedImage.srcSet} alt={selectedImage.alt} />}
         
       </Modal>
-    </ErrorBoundary>
+      </>
   );
 }
 

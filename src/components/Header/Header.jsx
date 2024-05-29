@@ -1,10 +1,10 @@
-// import styles from "./Header.module.css"
+import styles from "./Header.module.css"
 import SearchBar from "../SearchBar/SearchBar";
 
 
 const Header = ({onSearch, notify}) => {
   return (
-    <header>
+    <header className={styles.header}>
       <SearchBar onSearch={onSearch} notify={notify} />
             
     </header>

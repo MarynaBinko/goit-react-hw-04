@@ -1,4 +1,4 @@
-// import styles from "./SearchBar.module.css"
+import styles from "./SearchBar.module.css"
 
 const SearchBar = ({ onSearch, notify }) => {
   const handleSubmit = (e) => {
@@ -15,15 +15,16 @@ const SearchBar = ({ onSearch, notify }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
           autoComplete="off"
           autoFocus
           name="topic"
           placeholder="Search images and photos"
+          className={styles.input}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={styles.button}>Search</button>
       </form>
     </div>
   );
