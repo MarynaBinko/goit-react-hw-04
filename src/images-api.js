@@ -10,7 +10,7 @@ axios.defaults.baseURL = "https://api.unsplash.com/";
       params: {
         query: topic,
         page: page,
-        per_page: 10,
+        per_page: 12,
         client_id: ACCESS_KEY 
       }
     });

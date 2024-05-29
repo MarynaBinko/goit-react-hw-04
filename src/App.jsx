@@ -25,7 +25,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-  },
+     },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.75)', 
     },
@@ -88,7 +88,7 @@ function App() {
       <Header onSearch={onSearch} notify={notify}/>
       <Toaster   toastOptions={{
           style: {
-            marginTop: '70px',
+            marginTop: '80px',
           },
         }}/>
       {images.length > 0 && <ImageGallery images={images} openModal={openModal}/>}
