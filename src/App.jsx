@@ -42,12 +42,19 @@ function App() {
     try {
       setError(false);
       setLoading(true);
-      const data = await fetchImagesApi(topic, page);   
+      const data = await fetchImagesApi(topic, page);
+         
+      if (data.length === 0) {
+        alert("Please enter a correct request");
+        setHasMore(false);
+        return;
+      }
          
       setImages((prevImages) => [...prevImages, ...data]);
       if (data.length < 12) {
         setHasMore(false);
       }
+     
     } catch (error) {
       setError(true);
     } finally {
