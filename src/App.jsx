@@ -8,29 +8,11 @@ import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 
 import { fetchImagesApi } from './images-api';
 import { Audio } from 'react-loader-spinner';
-import Modal from 'react-modal';
+
 
 import './App.css';
 import toast,  { Toaster } from 'react-hot-toast';
-
-
-
-// _________________Modal___________________
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-     },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.75)', 
-    },
-};
-Modal.setAppElement('#root'); 
+import ImageModal from './components/ImageModal/ImageModal';
 
 
 // _______________________Toast___________________________
@@ -108,18 +90,8 @@ function App() {
 />}
       {error && <ErrorMessage message="Whoops, something went wrong! Please try reloading this page!" />}
       {images.length > 0 && !loading && hasMore && <LoadMoreBtn onClick={loadMore} />}
-      <Modal
-        isOpen={modalIsOpen}        
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Image Modal"
-        shouldCloseOnOverlayClick={true} 
-        shouldCloseOnEsc={true} 
-      >
-        {selectedImage && <img src={selectedImage.srcSet} alt={selectedImage.alt} />}
-        
-      </Modal>
-      </>
+      <ImageModal isOpen={modalIsOpen} onRequestClose={closeModal} selectedImage={selectedImage} />
+   </>
   );
 }
 
